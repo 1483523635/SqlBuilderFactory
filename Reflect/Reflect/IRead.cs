@@ -2,6 +2,6 @@
 {
     public interface IRead
     {
-        string ReadSqlString { get; }
+        string ReadSqlString(object obj);
     }
 }

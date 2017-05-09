@@ -12,9 +12,10 @@ namespace Reflect
     {
         static void Main(string[] args)
         {
-
-              Members();
-           // GetMemberReturntype();
+            test();
+            // Members();
+            // GetMemberReturntype();
+           // GetTableName();
             Console.Read();
         }
 
@@ -103,7 +104,29 @@ namespace Reflect
 
         #region property
 
-        
+
+
+        #endregion
+
+        #region gettableName
+
+        static void GetTableName()
+        {
+            Type t = typeof(ReflectTestClass);
+            Console.Write(t.Name);
+        }
+
+        #endregion
+
+        #region sqlFactoryTest
+
+        static void test()
+        {
+            Users u=new Users();
+            IRead factory= new SqlBuilderFactory();
+           var result= factory.ReadSqlString(u);
+            Console.Write(result);
+        }
 
         #endregion
 
