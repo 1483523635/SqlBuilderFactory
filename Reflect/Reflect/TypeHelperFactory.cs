@@ -18,9 +18,9 @@ namespace Reflect
         public static List<string> GetAllProperty(Type type)
         {
             var Propertys = BaseTypeHelper
-                           .GetAllMembers(type)
-                           .ToList()
-                           .FindAll(member => member.MemberType == MemberTypes.Property);
+                          .GetAllMembers(type)
+                          .ToList()
+                          .FindAll(member => member.MemberType == MemberTypes.Property);
             var PropertyList = new List<string>();
             foreach (var item in Propertys)
             {
@@ -29,13 +29,13 @@ namespace Reflect
             return PropertyList;
         }
 
-        public static string GetTableName(Type type)
-        {
-            return type.Name;
-        }
         #endregion
 
-    
+        #region MyRegion
+
+        
+
+        #endregion
 
     }
 }

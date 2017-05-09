@@ -7080,10 +7080,10 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\VS2017 Project\\SqlBuilderFactory\\Reflect\\Reflect\\Reflect.csproj",
+      "projectUniqueName": "F:\\VS2017 Project\\Reflect\\Reflect\\Reflect.csproj",
       "projectName": "Reflect",
-      "projectPath": "F:\\VS2017 Project\\SqlBuilderFactory\\Reflect\\Reflect\\Reflect.csproj",
-      "outputPath": "F:\\VS2017 Project\\SqlBuilderFactory\\Reflect\\Reflect\\obj\\",
+      "projectPath": "F:\\VS2017 Project\\Reflect\\Reflect\\Reflect.csproj",
+      "outputPath": "F:\\VS2017 Project\\Reflect\\Reflect\\obj\\",
       "projectStyle": "PackageReference",
       "originalTargetFrameworks": [
         "netcoreapp1.1"
