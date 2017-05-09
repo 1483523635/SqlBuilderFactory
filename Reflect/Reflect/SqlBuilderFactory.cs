@@ -4,19 +4,22 @@ using System.Text;
 
 namespace Reflect
 {
-    public abstract class SqlBuilderFactory : ICreate, IRead, IUpdate, IDelete
+    public  class SqlBuilderFactory : ICreate, IRead, IUpdate, IDelete
     {
         public string DeleteSqlString(string TableName, int Id)
         {
             throw new NotImplementedException();
         }
 
-        public string ReadSqlString
+        public string ReadSqlString(object obj)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            var type = obj.GetType();
+            var PropertyList = TypeHelperFactory.GetAllProperty(type);
+            var TableName = TypeHelperFactory.GetTableName(type);
+            string SelectString = string.Join(",", PropertyList);
+            StringBuilder sqlBuilder = new StringBuilder();
+            sqlBuilder.AppendFormat($"select {SelectString} from {TableName}");
+            return sqlBuilder.ToString();
         }
     }
 }

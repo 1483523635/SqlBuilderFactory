@@ -31,9 +31,19 @@ namespace Reflect
 
         #endregion
 
-        #region MyRegion
-
-        
+        #region GetTableName
+        /// <summary>
+        ///简单获取类的名称
+        /// 未查找特性[table(Name="")]的标注
+        /// 2017-5-9 18：00 
+        /// Author ：曲
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetTableName(Type type)
+        {
+            return type.Name;
+        }
 
         #endregion
 
