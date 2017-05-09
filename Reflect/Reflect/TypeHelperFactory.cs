@@ -9,14 +9,9 @@ namespace Reflect
 {
     public static class TypeHelperFactory
     {
-        #region 获取所有的属性
+        #region GetAllPropertyList
 
-        /// <summary>
-        /// 获取所有属性
-        /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        public static List<string> GetAllProperty(Type type)
+        public static List<string> GetAllPropertyList(Type type)
         {
             var Propertys = BaseTypeHelper
                           .GetAllMembers(type)
@@ -28,6 +23,24 @@ namespace Reflect
                 PropertyList.Add(item.Name);
             }
             return PropertyList;
+        }
+
+        #endregion
+
+        #region GetAllPropertyNameAndValueDictionary
+        //添加到字典中的时候已经去除掉空的值
+        public static Dictionary<string, object> GetAllPropertyNameAndValueDictionary(object obj)
+        {
+            Type type = obj.GetType();
+            var PropertyList = GetAllPropertyList(type);
+            var PropertyValueList = new Dictionary<string, object>();
+            foreach (var Property in PropertyList)
+            {
+                var value = BaseTypeHelper.GetValue(obj, Property);
+                if (value == null) continue;
+                PropertyValueList.Add(Property, value);
+            }
+            return PropertyValueList;
         }
 
         #endregion
@@ -50,26 +63,26 @@ namespace Reflect
 
         #region GetPrimaryKey
 
-        public static string GetPrimaryKey( Type type)
+        public static string GetPrimaryKey(Type type)
         {
             //1.查找特性标注为key的
             //2.如果不存在 查找 类型为int和名称为ID/Id/id 的
-            var memberNameList = GetAllProperty(type);
-            var attrribute =new KeyAttribute();
-            
+            var memberNameList = GetAllPropertyList(type);
+            var attrribute = new KeyAttribute();
+
             foreach (var item in memberNameList)
             {
                 if (BaseTypeHelper.CustomAttributeExist(item, type, attrribute))
                 {
-                   return item;
+                    return item;
                 }
             }
-          return   memberNameList.FirstOrDefault(
-                                                 key => key.ToLower() == "id" 
-                                                 && BaseTypeHelper
-                                                    .GetPropertyType(key,type)
-                                                    .Contains("Int")
-                                                 );
+            return memberNameList.FirstOrDefault(
+                                                   key => key.ToLower() == "id"
+                                                   && BaseTypeHelper
+                                                      .GetPropertyType(key, type)
+                                                      .Contains("Int")
+                                                   );
 
         }
 
@@ -77,7 +90,7 @@ namespace Reflect
 
         #region GetPrimaryKeyValue
 
-        public static object GetPrimaryKeyValue(object obj,string PrimaryKeyName)
+        public static object GetPrimaryKeyValue(object obj, string PrimaryKeyName)
         {
             return BaseTypeHelper.GetValue(obj, PrimaryKeyName);
         }
@@ -86,7 +99,7 @@ namespace Reflect
 
         #region GetPrimaryKeyType
 
-        public static string GetPrimaryKeyType(Type type,string PrimaryKey)
+        public static string GetPrimaryKeyType(Type type, string PrimaryKey)
         {
             return BaseTypeHelper.GetPropertyType(PrimaryKey, type);
         }

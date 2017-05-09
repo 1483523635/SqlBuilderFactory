@@ -6,5 +6,6 @@ namespace Reflect
 {
     interface IUpdate
     {
+        string UpdateSqlString(object obj);
     }
 }
