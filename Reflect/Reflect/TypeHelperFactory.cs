@@ -84,5 +84,15 @@ namespace Reflect
 
         #endregion
 
+        #region GetPrimaryKeyType
+
+        public static string GetPrimaryKeyType(Type type,string PrimaryKey)
+        {
+            return BaseTypeHelper.GetPropertyType(PrimaryKey, type);
+        }
+
+
+        #endregion
+
     }
 }

@@ -7,7 +7,6 @@ namespace Reflect
     public  class SqlBuilderFactory : ICreate, IRead, IUpdate, IDelete
     {
      
-
         #region 获取Readsql语句 实现IRead接口
 
         public string ReadSqlString(object obj)
@@ -35,7 +34,7 @@ namespace Reflect
             }
             var PrimaryKeyValue = TypeHelperFactory.GetPrimaryKeyValue(obj, PrimaryKey);
             StringBuilder SqlStatement=new StringBuilder();
-            SqlStatement.AppendFormat($"delete from {TableName} where {PrimaryKey}={PrimaryKeyValue}");
+            SqlStatement.AppendFormat($"delete from {TableName} where {PrimaryKey}='{PrimaryKeyValue}'");
             return SqlStatement.ToString();
         }
         #endregion
