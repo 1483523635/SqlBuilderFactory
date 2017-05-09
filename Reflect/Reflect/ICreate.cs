@@ -4,7 +4,8 @@ using System.Text;
 
 namespace Reflect
 {
-    interface ICreate
+    public interface ICreate
     {
+        string CreateSqlString(object obj);
     }
 }
