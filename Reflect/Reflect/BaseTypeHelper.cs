@@ -32,7 +32,7 @@ namespace Reflect
         /// <returns></returns>
         private static PropertyInfo GetProperty(object obj, string MemberName)
         {
-            var type = obj.GetType();
+            var type = obj.GetType(); 
             var member = GetOneMember(type, MemberName);
             return type.GetProperty(member.Name);
 
@@ -67,7 +67,7 @@ namespace Reflect
         #region 获取声明成员的类型
 
         /// <summary>
-        /// 获取成员的类型
+        /// 获取声明成员的类型
         /// 说明：返回若为空则 没有找到
         /// 若不为空，则查找正常
         /// </summary>
@@ -87,11 +87,11 @@ namespace Reflect
         }
         #endregion
 
-        #region 获取成员是否含有某个属性
+        #region 获取单个成员是否含有某个属性
 
 
         /// <summary>
-        /// 获取成员是否含有某个特性
+        /// 获取单个成员是否含有某个特性
         /// </summary>
         /// <param name="MemberName">成员的名称</param>
         /// <param name="t">所在类的类型</param>
@@ -136,6 +136,7 @@ namespace Reflect
             return Property.GetValue(obj);
         }
         #endregion
-      
+        
+        
     }
 }

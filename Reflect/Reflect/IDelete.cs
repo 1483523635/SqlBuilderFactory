@@ -6,6 +6,7 @@ namespace Reflect
 {
     public interface IDelete
     {
-        string DeleteSqlString(string TableName,int Id);
+        string DeleteSqlString(object obj);
+       
     }
 }

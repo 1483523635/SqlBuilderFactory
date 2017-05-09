@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -43,6 +44,42 @@ namespace Reflect
         public static string GetTableName(Type type)
         {
             return type.Name;
+        }
+
+        #endregion
+
+        #region GetPrimaryKey
+
+        public static string GetPrimaryKey( Type type)
+        {
+            //1.查找特性标注为key的
+            //2.如果不存在 查找 类型为int和名称为ID/Id/id 的
+            var memberNameList = GetAllProperty(type);
+            var attrribute =new KeyAttribute();
+            
+            foreach (var item in memberNameList)
+            {
+                if (BaseTypeHelper.CustomAttributeExist(item, type, attrribute))
+                {
+                   return item;
+                }
+            }
+          return   memberNameList.FirstOrDefault(
+                                                 key => key.ToLower() == "id" 
+                                                 && BaseTypeHelper
+                                                    .GetPropertyType(key,type)
+                                                    .Contains("Int")
+                                                 );
+
+        }
+
+        #endregion
+
+        #region GetPrimaryKeyValue
+
+        public static object GetPrimaryKeyValue(object obj,string PrimaryKeyName)
+        {
+            return BaseTypeHelper.GetValue(obj, PrimaryKeyName);
         }
 
         #endregion
