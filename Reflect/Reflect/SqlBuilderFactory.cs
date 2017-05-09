@@ -13,10 +13,9 @@ namespace Reflect
         {
             var type = obj.GetType();
             var TableName = TypeHelperFactory.GetTableName(type);
-            var PrimaryKey = TypeHelperFactory.GetPrimaryKey(type);
-            var PropertyList = TypeHelperFactory.GetAllPropertyList(type);
+            var PrimaryKeyName = TypeHelperFactory.GetPrimaryKey(type);
             var PropertyNameAndValueDictionary = TypeHelperFactory.GetAllPropertyNameAndValueDictionary(obj);
-            PropertyNameAndValueDictionary.Remove(PrimaryKey);
+            PropertyNameAndValueDictionary.Remove(PrimaryKeyName);
             var PropertyNameList = new List<string>();
             var PropertyValueList = new List<object>();
             foreach (var item in PropertyNameAndValueDictionary)
@@ -56,14 +55,14 @@ namespace Reflect
         {
             var type = obj.GetType();
             var TableName = TypeHelperFactory.GetTableName(type);
-            var PrimaryKey = TypeHelperFactory.GetPrimaryKey(type);
-            if (PrimaryKey == null)
+            var PrimaryKeyName = TypeHelperFactory.GetPrimaryKey(type);
+            if (PrimaryKeyName == null)
             {
                 throw new Exception("不存在主键");
             }
-            var PrimaryKeyValue = TypeHelperFactory.GetPrimaryKeyValue(obj, PrimaryKey);
+            var PrimaryKeyValue = TypeHelperFactory.GetPrimaryKeyValue(obj, PrimaryKeyName);
             var PropertyNameAndValueDictionary = TypeHelperFactory.GetAllPropertyNameAndValueDictionary(obj);
-            PropertyNameAndValueDictionary.Remove(PrimaryKey);
+            PropertyNameAndValueDictionary.Remove(PrimaryKeyName);
             var NameAndValueList = new List<string>();
             foreach (var item in PropertyNameAndValueDictionary)
             {
@@ -73,7 +72,7 @@ namespace Reflect
             StringBuilder sqlStatement = new StringBuilder();
             sqlStatement.AppendFormat(
                                       $"update {TableName} set {sql} " +
-                                      $"where {PrimaryKey}='{PrimaryKeyValue}'"
+                                      $"where {PrimaryKeyName}='{PrimaryKeyValue}'"
                                      );
             return sqlStatement.ToString();
         }
