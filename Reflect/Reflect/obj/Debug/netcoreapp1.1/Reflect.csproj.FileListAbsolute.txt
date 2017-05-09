@@ -1,0 +1,9 @@
+F:\VS2017 Project\Reflect\Reflect\bin\Debug\netcoreapp1.1\Reflect.deps.json
+F:\VS2017 Project\Reflect\Reflect\bin\Debug\netcoreapp1.1\Reflect.runtimeconfig.json
+F:\VS2017 Project\Reflect\Reflect\bin\Debug\netcoreapp1.1\Reflect.runtimeconfig.dev.json
+F:\VS2017 Project\Reflect\Reflect\bin\Debug\netcoreapp1.1\Reflect.dll
+F:\VS2017 Project\Reflect\Reflect\bin\Debug\netcoreapp1.1\Reflect.pdb
+F:\VS2017 Project\Reflect\Reflect\obj\Debug\netcoreapp1.1\Reflect.csprojResolveAssemblyReference.cache
+F:\VS2017 Project\Reflect\Reflect\obj\Debug\netcoreapp1.1\Reflect.AssemblyInfo.cs
+F:\VS2017 Project\Reflect\Reflect\obj\Debug\netcoreapp1.1\Reflect.dll
+F:\VS2017 Project\Reflect\Reflect\obj\Debug\netcoreapp1.1\Reflect.pdb
