@@ -20,7 +20,7 @@ namespace Reflect.DateBaseFactory.BaseClass
         }
 
         protected abstract string DatabaseConncetionString();
-        public abstract List<T> GetAllInfo<T>() where T : class;
+        public abstract List<T> GetAllInfo<T>() where T : new();
         public abstract bool Add(object data);
         public abstract bool Update(object data);
         public abstract bool Remove(object data);
